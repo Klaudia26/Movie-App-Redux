@@ -1,0 +1,16 @@
+.sideBarNews {
+  position: fixed;
+  top: 10rem;
+  bottom: 0;
+  width: 20rem;
+  right: 0;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  overflow-y: scroll;
+  height: 100%;
+  padding: 1rem;
+
+  img {
+    width: 14rem;
+  }
+}
