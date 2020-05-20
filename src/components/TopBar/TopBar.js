@@ -1,34 +1,47 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchSearchMovies } from '../actions';
+import { updateKeyword } from '../actions';
+import { NavLink } from 'react-router-dom';
+import { GoDeviceCameraVideo } from 'react-icons/go';
 import './TopBar.scss';
 
 class TopBar extends Component {
-  state = {
-    value: '',
-  };
-
   handleChange = (e) => {
-    this.setState({
-      value: e.target.value,
-    });
-    if (e.target.value) {
-      this.props.fetchSearchMovies(e.target.value);
-    }
+    this.props.updateKeyword(e.target.value);
   };
   render() {
     return (
       <div className="topBar">
         <div className="container">
-          <div>logo</div>
-          <div className="serach">
+          <NavLink to="/">
+            <div className="logo">
+              <GoDeviceCameraVideo />
+            </div>
+          </NavLink>
+          <div>
             <input
               type="text"
-              value={this.state.value}
+              value={this.props.keyword}
               onChange={this.handleChange}
+              placeholder="Search any movies or tv shows"
+              className="search"
             />
           </div>
-          <div>navigation</div>
+          <nav className="nav">
+            <ul className="nav__list">
+              <li className="nav__item">
+                <NavLink to="/movies" activeClassName="active">
+                  Movies
+                </NavLink>
+              </li>
+              <li className="nav__item">
+                <NavLink to="/tvshows">TV Shows</NavLink>
+              </li>
+              <li className="nav__item">
+                <NavLink to="/watchlist">Watchlist</NavLink>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
     );
@@ -36,10 +49,10 @@ class TopBar extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.movies);
   return {
     movies: state.movies,
+    keyword: state.keyword,
   };
 };
 
-export default connect(mapStateToProps, { fetchSearchMovies })(TopBar);
+export default connect(mapStateToProps, { updateKeyword })(TopBar);
