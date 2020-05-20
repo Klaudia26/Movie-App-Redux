@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import TopBar from './components/TopBar/TopBar';
 import SideBarFilters from './components/SideBarFilters/SideBarFilters';
-import Main from './components/Main/Main';
+import MainPage from './components/MovieViews/MainPage';
 import SideBarNews from './components/SideBarNews/SideBarNews';
 import './MainStyle.scss';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 class App extends Component {
   render() {
     return (
-      <div>
+      <Router>
         <TopBar />
         <SideBarFilters />
-        <Main />
+        <MainPage />
         <SideBarNews />
-      </div>
+      </Router>
     );
   }
 }

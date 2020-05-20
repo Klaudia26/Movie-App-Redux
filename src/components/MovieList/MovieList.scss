@@ -1,0 +1,21 @@
+.movies-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  padding: 1rem;
+
+  &__item {
+    padding: 1rem;
+  }
+
+  &.slider {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    overflow-x: scroll;
+    align-items: stretch;
+    justify-content: center;
+  }
+}
