@@ -33,3 +33,35 @@ a {
   text-decoration: none;
   color: #000;
 }
+
+h2 {
+  padding-left: 2rem;
+}
+
+.btn {
+  padding: 10px 30px;
+  border: none;
+  outline: none;
+  background-color: #40d59d;
+  color: #fff;
+  border-radius: 5px;
+  margin: 0 5px;
+  font-size: 14px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &--loadMore {
+    display: block;
+    margin: 1rem auto;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  &:active {
+    transform: translateY(0px);
+  }
+}
