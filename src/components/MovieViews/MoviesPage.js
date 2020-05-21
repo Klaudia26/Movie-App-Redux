@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchTopMovies, updateKeyword, fetchMoviesSearch } from '../actions';
 import MovieList from '../MovieList/MovieList';
-import Modal from '../Modal/Modal';
+import MovieModal from '../Modal/MovieModal';
 
 class MoviesPage extends Component {
   componentDidMount() {
@@ -26,7 +26,7 @@ class MoviesPage extends Component {
           movies={isMovies ? allMovies : topMovies}
           heading={'Movies'}
         />
-        {isModal ? <Modal /> : null}
+        {isModal ? <MovieModal /> : null}
       </div>
     );
   }

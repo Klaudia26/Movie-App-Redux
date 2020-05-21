@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchTvShows, updateKeyword, fetchTvPopular } from '../actions';
 import MovieList from '../MovieList/MovieList';
+import MovieModal from '../Modal/MovieModal';
 
 class TvShowsPage extends Component {
   componentDidMount() {
@@ -23,6 +24,7 @@ class TvShowsPage extends Component {
           movies={isMovies ? this.props.tvShows : this.props.tvPopular}
           heading={'TV Shows'}
         />
+        {this.props.isModal ? <MovieModal /> : null}
       </div>
     );
   }
@@ -33,6 +35,7 @@ const mapStateToProps = (state) => {
     tvPopular: state.tvPopular,
     tvShows: state.tvShows,
     keyword: state.keyword,
+    isModal: state.isModal,
   };
 };
 

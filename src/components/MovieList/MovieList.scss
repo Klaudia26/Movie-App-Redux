@@ -8,7 +8,8 @@
 
   &__item {
     padding: 1rem;
-    flex: 1;
+    flex: 0 1;
+    cursor: pointer;
   }
 
   &.slider {
@@ -17,6 +18,6 @@
     overflow: hidden;
     overflow-x: scroll;
     align-items: stretch;
-    justify-content: center;
+    justify-content: flex-start;
   }
 }
