@@ -1,0 +1,57 @@
+.dimmer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .modal {
+    background-color: white;
+    color: #000;
+    width: 700px;
+    border-radius: 10px;
+    position: relative;
+
+    &__header {
+      border-bottom: 1px solid grey;
+      padding: 30px;
+
+      .close-icon {
+        color: #000;
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        font-size: 27px;
+        cursor: pointer;
+      }
+    }
+
+    &__content {
+      border-bottom: 1px solid grey;
+      padding: 30px;
+    }
+
+    &__body {
+      display: flex;
+
+      &-image {
+        margin-right: 5rem;
+      }
+
+      .title {
+        margin-bottom: 2rem;
+        font-weight: 600;
+      }
+    }
+
+    &__actions {
+      padding: 30px;
+      text-align: right;
+    }
+  }
+}
