@@ -1,6 +1,6 @@
 .movies-list {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
   flex-wrap: wrap;
   overflow-y: scroll;
@@ -8,6 +8,7 @@
 
   &__item {
     padding: 1rem;
+    flex: 1;
   }
 
   &.slider {
