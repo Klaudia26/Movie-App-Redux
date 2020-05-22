@@ -98,3 +98,10 @@ export const selectMovie = (movie) => {
     payload: movie,
   };
 };
+
+export const addToWatchList = (movie) => {
+  return {
+    type: 'ADD_TO_WATCH_LIST',
+    payload: movie,
+  };
+};

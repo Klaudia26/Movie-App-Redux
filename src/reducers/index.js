@@ -9,6 +9,7 @@ import tvShowsReducer from './tvShowsReducer';
 import tvPopularReducer from './tvPopularReducer';
 import modalReducer from './modalReduce';
 import selectMovieReducer from './selectMovieReducer';
+import watchListReducer from './watchListReducer';
 
 export default combineReducers({
   movies: multiReducer,
@@ -21,4 +22,5 @@ export default combineReducers({
   tvPopular: tvPopularReducer,
   isModal: modalReducer,
   selectMovie: selectMovieReducer,
+  watchList: watchListReducer,
 });

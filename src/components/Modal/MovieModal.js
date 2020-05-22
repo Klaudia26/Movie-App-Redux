@@ -1,16 +1,24 @@
 import React from 'react';
 import Modal from './Modal';
 import { connect } from 'react-redux';
-import { closeModal } from '../actions';
+import { closeModal, addToWatchList } from '../actions';
 
-const MovieModal = ({ movie, closeModal }) => {
+const MovieModal = ({ movie, closeModal, addToWatchList }) => {
   const renderAction = () => {
     return (
       <div>
         <button onClick={closeModal} className="btn">
           close
         </button>
-        <button className="btn">watchlist</button>
+        <button
+          className="btn"
+          onClick={() => {
+            addToWatchList(movie);
+            closeModal();
+          }}
+        >
+          watchlist
+        </button>
       </div>
     );
   };
@@ -47,4 +55,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { closeModal })(MovieModal);
+export default connect(mapStateToProps, { closeModal, addToWatchList })(
+  MovieModal
+);
