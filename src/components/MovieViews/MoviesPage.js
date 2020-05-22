@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchTopMovies, updateKeyword, fetchMoviesSearch } from '../actions';
+import {
+  fetchTopMovies,
+  updateKeyword,
+  fetchMoviesSearch,
+} from '../../actions';
 import MovieList from '../MovieList/MovieList';
 import MovieModal from '../Modal/MovieModal';
 
@@ -35,8 +39,8 @@ class MoviesPage extends Component {
 const mapStateToProps = (state) => {
   console.log(state);
   return {
-    topMovies: state.topMovies,
-    allMovies: state.allMovies,
+    topMovies: state.dataApi.topMovies,
+    allMovies: state.dataApi.allMovies,
     keyword: state.keyword,
     isModal: state.isModal,
   };

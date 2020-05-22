@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchUpcomingMovies } from '../actions';
+import { fetchUpcomingMovies } from '../../actions';
 import './SideBarNews.scss';
 import MovieList from '../MovieList/MovieList';
 
@@ -20,7 +20,7 @@ class SideBarNews extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    upcoming: state.upcomingMovies,
+    upcoming: state.dataApi.upcomingMovies,
   };
 };
 export default connect(mapStateToProps, { fetchUpcomingMovies })(SideBarNews);

@@ -7,7 +7,7 @@ import {
   fetchTopMovies,
   fetchPopularMovies,
   fetchMultiSearch,
-} from '../actions';
+} from '../../actions';
 import './MovieViews.scss';
 
 class MainPage extends Component {
@@ -41,9 +41,9 @@ class MainPage extends Component {
 const mapStateToProps = (state) => {
   return {
     keyword: state.keyword,
-    movies: state.movies,
-    topMovies: state.topMovies,
-    popularMovies: state.popularMovies,
+    movies: state.dataApi.movies,
+    topMovies: state.dataApi.topMovies,
+    popularMovies: state.dataApi.popularMovies,
     isModal: state.isModal,
   };
 };

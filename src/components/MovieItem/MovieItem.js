@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { openModal, selectMovie } from '../actions';
+import { openModal, selectMovie } from '../../actions';
 
 const MovieItem = ({ movie, openModal, selectMovie }) => {
   return (

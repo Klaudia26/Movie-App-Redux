@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchTvShows, updateKeyword, fetchTvPopular } from '../actions';
+import { fetchTvShows, updateKeyword, fetchTvPopular } from '../../actions';
 import MovieList from '../MovieList/MovieList';
 import MovieModal from '../Modal/MovieModal';
 
@@ -32,8 +32,8 @@ class TvShowsPage extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    tvPopular: state.tvPopular,
-    tvShows: state.tvShows,
+    tvPopular: state.dataApi.tvPopular,
+    tvShows: state.dataApi.tvShows,
     keyword: state.keyword,
     isModal: state.isModal,
   };

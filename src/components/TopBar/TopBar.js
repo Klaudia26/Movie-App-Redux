@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateKeyword } from '../actions';
+import { updateKeyword, openModalUser } from '../../actions';
 import { NavLink } from 'react-router-dom';
 import { GoDeviceCameraVideo } from 'react-icons/go';
+import { FaUser } from 'react-icons/fa';
+import UserModal from '../Modal/UserModal';
 import './TopBar.scss';
 
 class TopBar extends Component {
@@ -40,6 +42,15 @@ class TopBar extends Component {
               <li className="nav__item">
                 <NavLink to="/watchlist">Watchlist</NavLink>
               </li>
+              <li
+                className="nav__item"
+                onClick={() => this.props.openModalUser()}
+              >
+                <NavLink to="/">
+                  <FaUser />
+                </NavLink>
+              </li>
+              {this.props.isModalUser ? <UserModal /> : null}
             </ul>
           </nav>
         </div>
@@ -52,7 +63,10 @@ const mapStateToProps = (state) => {
   return {
     movies: state.movies,
     keyword: state.keyword,
+    isModalUser: state.isModalUser,
   };
 };
 
-export default connect(mapStateToProps, { updateKeyword })(TopBar);
+export default connect(mapStateToProps, { updateKeyword, openModalUser })(
+  TopBar
+);

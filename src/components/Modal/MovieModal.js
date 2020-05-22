@@ -1,7 +1,7 @@
 import React from 'react';
 import Modal from './Modal';
 import { connect } from 'react-redux';
-import { closeModal, addToWatchList } from '../actions';
+import { closeModal, addToWatchList } from '../../actions';
 
 const MovieModal = ({ movie, closeModal, addToWatchList }) => {
   const renderAction = () => {

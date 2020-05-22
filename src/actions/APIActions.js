@@ -72,36 +72,3 @@ export const fetchTvShows = (keyword, page = 1) => async (dispatch) => {
     payload: response.data.results,
   });
 };
-
-export const updateKeyword = (keyword) => {
-  return {
-    type: 'UPDATE_KEYWORD',
-    payload: keyword,
-  };
-};
-
-export const openModal = () => {
-  return {
-    type: 'OPEN_MODAL',
-  };
-};
-
-export const closeModal = () => {
-  return {
-    type: 'CLOSE_MODAL',
-  };
-};
-
-export const selectMovie = (movie) => {
-  return {
-    type: 'SELECT_MOVIE',
-    payload: movie,
-  };
-};
-
-export const addToWatchList = (movie) => {
-  return {
-    type: 'ADD_TO_WATCH_LIST',
-    payload: movie,
-  };
-};
