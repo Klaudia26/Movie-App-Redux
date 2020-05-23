@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import MoviesPage from './components/MovieViews/MoviesPage';
 import TvShowsPage from './components/MovieViews/TvShowsPage';
 import WatchListPage from './components/MovieViews/WatchListPage';
+import SignUp from './components/SignUp/SignUp';
 
 class App extends Component {
   render() {
@@ -20,6 +21,7 @@ class App extends Component {
           <Route path="/movies" component={MoviesPage} />
           <Route path="/tvshows" component={TvShowsPage} />
           <Route path="/watchlist" component={WatchListPage} />
+          <Route path="/signup" component={SignUp} />
           <SideBarNews />
         </>
       </Router>

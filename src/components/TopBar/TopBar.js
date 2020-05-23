@@ -42,6 +42,9 @@ class TopBar extends Component {
               <li className="nav__item">
                 <NavLink to="/watchlist">Watchlist</NavLink>
               </li>
+              <li className="nav__item">
+                <NavLink to="/signup">Signup</NavLink>
+              </li>
               <li
                 className="nav__item"
                 onClick={() => this.props.openModalUser()}

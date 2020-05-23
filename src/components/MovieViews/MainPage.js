@@ -47,6 +47,7 @@ const mapStateToProps = (state) => {
     isModal: state.isModal,
   };
 };
+
 export default connect(mapStateToProps, {
   fetchTopMovies,
   fetchPopularMovies,
