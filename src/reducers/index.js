@@ -4,14 +4,13 @@ import keywordReducer from './keywordReducer';
 import modalReducer from './modalReduce';
 import selectMovieReducer from './selectMovieReducer';
 import watchListReducer from './watchListReducer';
-import modalUserReducer from './modalUserReducer';
+import userReducer from './userReducer';
 
 export default combineReducers({
   dataApi: apiReducer,
-
+  user: userReducer,
   keyword: keywordReducer,
   isModal: modalReducer,
   selectMovie: selectMovieReducer,
   watchList: watchListReducer,
-  isModalUser: modalUserReducer,
 });
