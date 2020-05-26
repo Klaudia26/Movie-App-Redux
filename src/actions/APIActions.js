@@ -72,3 +72,13 @@ export const fetchTvShows = (keyword, page = 1) => async (dispatch) => {
     payload: response.data.results,
   });
 };
+
+export const fetchGenreMovie = () => async (dispatch) => {
+  const url = `${baseUrl}/3/genre/movie/list?api_key=${key}&&language=en-US`;
+  const response = await axios.get(url);
+
+  dispatch({
+    type: 'FETCH_GENRE_MOVIE',
+    payload: response.data.genres,
+  });
+};
