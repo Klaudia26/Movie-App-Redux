@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import TopBar from './components/TopBar/TopBar';
 import SideBarFilters from './components/SideBarFilters/SideBarFilters';
 import MainPage from './components/MovieViews/MainPage';
 import SideBarNews from './components/SideBarNews/SideBarNews';
-import './MainStyle.scss';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import MoviesPage from './components/MovieViews/MoviesPage';
 import TvShowsPage from './components/MovieViews/TvShowsPage';
 import WatchListPage from './components/MovieViews/WatchListPage';
-import SignUp from './components/SignUp/SignUp';
+import MovieModal from './components/Modal/MovieModal';
+import UserForm from './components/UserForm/UserForm';
+import SignUpForm from './components/SignupForm/SignupForm';
+import './MainStyle.scss';
 
 class App extends Component {
   render() {
@@ -21,12 +24,20 @@ class App extends Component {
           <Route path="/movies" component={MoviesPage} />
           <Route path="/tvshows" component={TvShowsPage} />
           <Route path="/watchlist" component={WatchListPage} />
-          <Route path="/signup" component={SignUp} />
+          <Route path="/signup" component={SignUpForm} />
+          <Route path="/account" component={UserForm} />
           <SideBarNews />
+          {this.props.isModal ? <MovieModal /> : null}
         </>
       </Router>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    isModal: state.isModal,
+  };
+};
+
+export default connect(mapStateToProps)(App);
