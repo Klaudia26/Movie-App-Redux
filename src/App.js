@@ -11,6 +11,7 @@ import WatchListPage from './components/MovieViews/WatchListPage';
 import MovieModal from './components/Modal/MovieModal';
 import UserForm from './components/UserForm/UserForm';
 import SignUpForm from './components/SignupForm/SignupForm';
+import requireAuth from './Hoc/requireAuth';
 import './MainStyle.scss';
 
 class App extends Component {
@@ -25,7 +26,7 @@ class App extends Component {
           <Route path="/tvshows" component={TvShowsPage} />
           <Route path="/watchlist" component={WatchListPage} />
           <Route path="/signup" component={SignUpForm} />
-          <Route path="/account" component={UserForm} />
+          <Route path="/account" component={requireAuth(UserForm)} />
           <SideBarNews />
           {this.props.isModal ? <MovieModal /> : null}
         </>
