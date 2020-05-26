@@ -15,3 +15,7 @@ export const setLocalStorage = (key, value) => {
     localStorage.setItem(key, serializedState);
   } catch (e) {}
 };
+
+export const clearLocalStorage = (key) => {
+  localStorage.clear(key);
+};

@@ -4,3 +4,16 @@ export const addUser = (user) => {
     payload: user,
   };
 };
+
+export const logout = () => {
+  return {
+    type: 'LOGOUT_USER',
+  };
+};
+
+export const updateUser = (user) => {
+  return {
+    type: 'UPDATE_USER',
+    payload: user,
+  };
+};
