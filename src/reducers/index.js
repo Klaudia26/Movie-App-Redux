@@ -5,6 +5,7 @@ import modalReducer from './modalReduce';
 import selectMovieReducer from './selectMovieReducer';
 import watchListReducer from './watchListReducer';
 import userReducer from './userReducer';
+import filterReducer from './filterReducer';
 
 export default combineReducers({
   dataApi: apiReducer,
@@ -13,4 +14,5 @@ export default combineReducers({
   isModal: modalReducer,
   selectMovie: selectMovieReducer,
   watchList: watchListReducer,
+  activeFilters: filterReducer,
 });
