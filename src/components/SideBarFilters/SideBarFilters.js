@@ -11,19 +11,21 @@ class SideBarFilters extends Component {
   render() {
     return (
       <div className="sideBarFilters">
-        <h3>Genre</h3>
-        <ul>
+        <h2 className="heading">Genre</h2>
+        <ul className="list">
           {this.props.genreMovie.map((genre) => {
             return (
-              <li key={genre.id}>
-                <label>
+              <li key={genre.id} className="list__item">
+                <label className="label">
                   <input
                     type="checkbox"
                     onChange={() => this.props.toggleGenreFilter(genre.id)}
                     value={this.props.activeFilters.genres.includes(genre.id)}
+                    className="input"
                   />
+                  <span className="checkmark" />
+                  {genre.name}
                 </label>
-                {genre.name}
               </li>
             );
           })}
