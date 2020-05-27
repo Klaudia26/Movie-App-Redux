@@ -6,7 +6,6 @@ import {
   fetchMoviesSearch,
 } from '../../actions';
 import MovieList from '../MovieList/MovieList';
-import MovieModal from '../Modal/MovieModal';
 
 class MoviesPage extends Component {
   componentDidMount() {
@@ -23,26 +22,38 @@ class MoviesPage extends Component {
 
   render() {
     const isMovies = this.props.allMovies.length > 0;
-    const { allMovies, topMovies, isModal } = this.props;
+    const { allMovies, topMovies } = this.props;
+
+    let moviesToRender = allMovies;
+    const activeFilters = this.props.activeFilters.genres;
+
+    if (isMovies && activeFilters.length) {
+      activeFilters.forEach((filterId) => {
+        moviesToRender = allMovies.filter(
+          (movie) =>
+            (movie.genre_ids && movie.genre_ids.includes(filterId)) ||
+            (movie.genre && movie.genre === filterId)
+        );
+      });
+    }
+
     return (
       <div className="main">
         <MovieList
-          movies={isMovies ? allMovies : topMovies}
+          movies={isMovies ? moviesToRender : topMovies}
           heading={'Movies'}
         />
-        {isModal ? <MovieModal /> : null}
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     topMovies: state.dataApi.topMovies,
     allMovies: state.dataApi.allMovies,
     keyword: state.keyword,
-    isModal: state.isModal,
+    activeFilters: state.activeFilters,
   };
 };
 export default connect(mapStateToProps, {

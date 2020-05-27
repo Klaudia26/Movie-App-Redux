@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchTvShows, updateKeyword, fetchTvPopular } from '../../actions';
 import MovieList from '../MovieList/MovieList';
-import MovieModal from '../Modal/MovieModal';
 
 class TvShowsPage extends Component {
   componentDidMount() {
@@ -17,14 +16,27 @@ class TvShowsPage extends Component {
   }
 
   render() {
-    const isMovies = this.props.tvShows.length > 0;
+    const { tvShows } = this.props;
+    const isMovies = tvShows.length > 0;
+
+    let moviesToRender = tvShows;
+    const activeFilters = this.props.activeFilters.genres;
+
+    if (isMovies && activeFilters.length) {
+      activeFilters.forEach((filterId) => {
+        moviesToRender = tvShows.filter(
+          (movie) =>
+            (movie.genre_ids && movie.genre_ids.includes(filterId)) ||
+            (movie.genre && movie.genre === filterId)
+        );
+      });
+    }
     return (
       <div className="main">
         <MovieList
-          movies={isMovies ? this.props.tvShows : this.props.tvPopular}
+          movies={isMovies ? moviesToRender : this.props.tvPopular}
           heading={'TV Shows'}
         />
-        {this.props.isModal ? <MovieModal /> : null}
       </div>
     );
   }
@@ -35,7 +47,7 @@ const mapStateToProps = (state) => {
     tvPopular: state.dataApi.tvPopular,
     tvShows: state.dataApi.tvShows,
     keyword: state.keyword,
-    isModal: state.isModal,
+    activeFilters: state.activeFilters,
   };
 };
 
