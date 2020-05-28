@@ -1,3 +1,4 @@
+import { TOGGLE_GENRE_FILTER, TOGGLE_LANGUAGES_FILTER } from '../actions/types';
 const INIT_STATE = {
   genres: [],
   languages: [],
@@ -5,7 +6,7 @@ const INIT_STATE = {
 
 const filterReducer = (state = INIT_STATE, action) => {
   switch (action.type) {
-    case 'TOGGLE_GENRE_FILTER':
+    case TOGGLE_GENRE_FILTER:
       const filterId = action.payload;
       const isActiveFilters = state.genres.includes(filterId);
       let newFilters;
@@ -21,7 +22,7 @@ const filterReducer = (state = INIT_STATE, action) => {
         genres: newFilters,
       };
 
-    case 'TOGGLE_LANGUAGES_FILTER':
+    case TOGGLE_LANGUAGES_FILTER:
       const filterLangId = action.payload;
       const isActiveFiltersLang = state.languages.includes(filterLangId);
       let newFiltersLang;

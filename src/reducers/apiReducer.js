@@ -1,3 +1,5 @@
+import * as types from '../actions/types';
+
 const INITIAL_STATE = {
   movies: [],
   topMovies: [],
@@ -12,52 +14,52 @@ const INITIAL_STATE = {
 
 const apiReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case 'FETCH_MOVIES':
+    case types.FETCH_MOVIES:
       return {
         ...state,
         movies: action.payload,
       };
-    case 'FETCH_POPULAR_MOVIES':
+    case types.FETCH_POPULAR_MOVIES:
       return {
         ...state,
         popularMovies: action.payload,
       };
-    case 'FETCH_TOP_MOVIES':
+    case types.FETCH_TOP_MOVIES:
       return {
         ...state,
         topMovies: action.payload,
       };
-    case 'FETCH_UPCOMING_MOVIES':
+    case types.FETCH_UPCOMING_MOVIES:
       return {
         ...state,
         upcomingMovies: action.payload,
       };
 
-    case 'FETCH_ALL_MOVIES':
+    case types.FETCH_ALL_MOVIES:
       return {
         ...state,
         allMovies: action.payload,
       };
 
-    case 'FETCH_TV_POPULAR':
+    case types.FETCH_TV_POPULAR:
       return {
         ...state,
         tvPopular: action.payload,
       };
 
-    case 'FETCH_TVSHOWS':
+    case types.FETCH_TVSHOWS:
       return {
         ...state,
         tvShows: action.payload,
       };
 
-    case 'FETCH_GENRE_MOVIE':
+    case types.FETCH_GENRE_MOVIE:
       return {
         ...state,
         genreMovie: action.payload,
       };
 
-    case 'FETCH_LANGUAGES':
+    case types.FETCH_LANGUAGES:
       return {
         ...state,
         languagesMovie: action.payload,
