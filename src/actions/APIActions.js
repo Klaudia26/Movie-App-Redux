@@ -82,3 +82,13 @@ export const fetchGenreMovie = () => async (dispatch) => {
     payload: response.data.genres,
   });
 };
+
+export const fetchLanguages = () => async (dispatch) => {
+  const url = `${baseUrl}/3/configuration/languages?api_key=${key}`;
+  const response = await axios.get(url);
+
+  dispatch({
+    type: 'FETCH_LANGUAGES',
+    payload: response.data,
+  });
+};

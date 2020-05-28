@@ -7,6 +7,7 @@ const INITIAL_STATE = {
   tvShows: [],
   tvPopular: [],
   genreMovie: [],
+  languagesMovie: [],
 };
 
 const apiReducer = (state = INITIAL_STATE, action) => {
@@ -54,6 +55,12 @@ const apiReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         genreMovie: action.payload,
+      };
+
+    case 'FETCH_LANGUAGES':
+      return {
+        ...state,
+        languagesMovie: action.payload,
       };
 
     default:

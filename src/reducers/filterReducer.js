@@ -21,6 +21,24 @@ const filterReducer = (state = INIT_STATE, action) => {
         genres: newFilters,
       };
 
+    case 'TOGGLE_LANGUAGES_FILTER':
+      const filterLangId = action.payload;
+      const isActiveFiltersLang = state.languages.includes(filterLangId);
+      let newFiltersLang;
+
+      if (isActiveFiltersLang) {
+        newFiltersLang = state.languages.filter(
+          (language) => language !== filterLangId
+        );
+      } else {
+        newFiltersLang = [...state.languages, action.payload];
+      }
+
+      return {
+        ...state,
+        languages: newFiltersLang,
+      };
+
     default:
       return state;
   }
