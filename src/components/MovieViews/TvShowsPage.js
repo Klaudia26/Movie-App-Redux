@@ -31,6 +31,19 @@ class TvShowsPage extends Component {
         );
       });
     }
+
+    const activeFiltersLang = this.props.activeFilters.languages;
+
+    if (isMovies && activeFiltersLang.length) {
+      activeFiltersLang.forEach((filterId) => {
+        moviesToRender = moviesToRender.filter((movie) => {
+          return (
+            movie.original_language && movie.original_language === filterId
+          );
+        });
+      });
+    }
+
     return (
       <div className="main">
         <MovieList
