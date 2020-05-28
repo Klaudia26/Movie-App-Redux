@@ -9,15 +9,3 @@ export const closeModal = () => {
     type: 'CLOSE_MODAL',
   };
 };
-
-export const openModalUser = () => {
-  return {
-    type: 'OPEN_MODAL_USER',
-  };
-};
-
-export const closeModalUser = () => {
-  return {
-    type: 'CLOSE_MODAL_USER',
-  };
-};

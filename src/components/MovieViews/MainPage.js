@@ -46,7 +46,6 @@ class MainPage extends Component {
     if (isMovies && activeFiltersLang.length) {
       activeFiltersLang.forEach((filterId) => {
         moviesToRender = moviesToRender.filter((movie) => {
-          console.log('movie', movie.original_language);
           return (
             movie.original_language && movie.original_language === filterId
           );

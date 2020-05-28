@@ -1,11 +1,10 @@
 import React from 'react';
 import Modal from './Modal';
-import { closeModalUser } from '../../actions';
-import { connect } from 'react-redux';
+import { clearLocalStorage } from '../../localStorage/localStorage';
 import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
-const UserModal = ({ closeModalUser }) => {
+const UserModal = ({ closeModal, logout }) => {
   const renderBody = () => {
     return (
       <>
@@ -16,18 +15,30 @@ const UserModal = ({ closeModalUser }) => {
         <div>
           <ul>
             <li>
-              <Link to="/" onClick={closeModalUser}>
+              <Link to="/" onClick={closeModal}>
                 Home
               </Link>
             </li>
             <li>
-              <Link to="/watchlist" onClick={closeModalUser}>
+              <Link to="/watchlist" onClick={closeModal}>
                 Watchlist
               </Link>
             </li>
             <li>
-              <Link to="/" onClick={closeModalUser}>
+              <Link to="/account" onClick={closeModal}>
                 Settings Account
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/"
+                onClick={() => {
+                  logout();
+                  clearLocalStorage('user');
+                  closeModal();
+                }}
+              >
+                Log out
               </Link>
             </li>
           </ul>
@@ -37,9 +48,9 @@ const UserModal = ({ closeModalUser }) => {
   };
   return (
     <div>
-      <Modal body={renderBody()} closeModal={closeModalUser} />
+      <Modal body={renderBody()} closeModal={closeModal} />
     </div>
   );
 };
 
-export default connect(null, { closeModalUser })(UserModal);
+export default UserModal;

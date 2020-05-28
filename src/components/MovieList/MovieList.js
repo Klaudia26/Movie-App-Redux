@@ -3,7 +3,6 @@ import MovieItem from '../MovieItem/MovieItem';
 import './MovieList.scss';
 
 const MovieList = ({ movies, heading }) => {
-  console.log('movies', movies);
   if (Array.isArray(movies)) {
     return (
       <div>

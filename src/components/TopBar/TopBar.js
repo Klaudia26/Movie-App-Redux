@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateKeyword, openModalUser } from '../../actions';
+import { updateKeyword } from '../../actions';
+import { logout } from '../../actions/UserActions';
 import { NavLink } from 'react-router-dom';
 import { GoDeviceCameraVideo } from 'react-icons/go';
 import { FaUser } from 'react-icons/fa';
@@ -8,6 +9,20 @@ import UserModal from '../Modal/UserModal';
 import './TopBar.scss';
 
 class TopBar extends Component {
+  state = {
+    isUserModal: false,
+  };
+
+  openModalUser = () => {
+    this.setState({
+      isUserModal: true,
+    });
+  };
+  closeModalUser = () => {
+    this.setState({
+      isUserModal: false,
+    });
+  };
   handleChange = (e) => {
     this.props.updateKeyword(e.target.value);
   };
@@ -42,18 +57,25 @@ class TopBar extends Component {
               <li className="nav__item">
                 <NavLink to="/watchlist">Watchlist</NavLink>
               </li>
-              <li className="nav__item">
-                <NavLink to="/signup">Signup</NavLink>
-              </li>
-              <li
-                className="nav__item"
-                onClick={() => this.props.openModalUser()}
-              >
-                <NavLink to="/">
-                  <FaUser />
-                </NavLink>
-              </li>
-              {this.props.isModalUser ? <UserModal /> : null}
+
+              {this.props.user ? (
+                <li className="nav__item" onClick={() => this.openModalUser()}>
+                  <NavLink to="/">
+                    <FaUser />
+                  </NavLink>
+                </li>
+              ) : (
+                <li className="nav__item">
+                  <NavLink to="/signup">Signup</NavLink>
+                </li>
+              )}
+
+              {this.state.isUserModal ? (
+                <UserModal
+                  closeModal={this.closeModalUser}
+                  logout={this.props.logout}
+                />
+              ) : null}
             </ul>
           </nav>
         </div>
@@ -67,9 +89,8 @@ const mapStateToProps = (state) => {
     movies: state.movies,
     keyword: state.keyword,
     isModalUser: state.isModalUser,
+    user: state.user,
   };
 };
 
-export default connect(mapStateToProps, { updateKeyword, openModalUser })(
-  TopBar
-);
+export default connect(mapStateToProps, { updateKeyword, logout })(TopBar);
