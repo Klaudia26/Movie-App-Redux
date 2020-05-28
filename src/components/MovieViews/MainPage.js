@@ -33,11 +33,24 @@ class MainPage extends Component {
 
     if (isMovies && activeFilters.length) {
       activeFilters.forEach((filterId) => {
-        moviesToRender = movies.filter(
+        moviesToRender = moviesToRender.filter(
           (movie) =>
             (movie.genre_ids && movie.genre_ids.includes(filterId)) ||
             (movie.genre && movie.genre === filterId)
         );
+      });
+    }
+
+    const activeFiltersLang = this.props.activeFilters.languages;
+
+    if (isMovies && activeFiltersLang.length) {
+      activeFiltersLang.forEach((filterId) => {
+        moviesToRender = moviesToRender.filter((movie) => {
+          console.log('movie', movie.original_language);
+          return (
+            movie.original_language && movie.original_language === filterId
+          );
+        });
       });
     }
     return (
