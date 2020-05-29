@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateKeyword } from '../../actions';
+import { getUserSelector, isModalOpenSelector } from '../../reducers';
+
 import { logout } from '../../actions/UserActions';
 import { NavLink } from 'react-router-dom';
 import { GoDeviceCameraVideo } from 'react-icons/go';
@@ -88,8 +90,8 @@ const mapStateToProps = (state) => {
   return {
     movies: state.movies,
     keyword: state.keyword,
-    isModalUser: state.isModalUser,
-    user: state.user,
+    isModalUser: isModalOpenSelector(state),
+    user: getUserSelector(state),
   };
 };
 

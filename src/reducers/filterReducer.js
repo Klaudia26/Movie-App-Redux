@@ -45,4 +45,8 @@ const filterReducer = (state = INIT_STATE, action) => {
   }
 };
 
+export const getActiveGenersFilters = (state) => state.activeFilters.genres;
+export const getActiveLanguagesFilters = (state) =>
+  state.activeFilters.languages;
+
 export default filterReducer;

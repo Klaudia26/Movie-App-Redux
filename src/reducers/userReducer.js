@@ -1,4 +1,5 @@
 import { ADD_USER, LOGOUT_USER, UPDATE_USER } from '../actions/types';
+
 const userReducer = (state = null, action) => {
   switch (action.type) {
     case ADD_USER || UPDATE_USER:
@@ -9,5 +10,7 @@ const userReducer = (state = null, action) => {
       return state;
   }
 };
+
+export const getUserSelector = (state) => state.user;
 
 export default userReducer;

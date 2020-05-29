@@ -70,4 +70,6 @@ const apiReducer = (state = INITIAL_STATE, action) => {
   }
 };
 
+export const getMovie = (state) => state.dataApi.movies;
+
 export default apiReducer;
