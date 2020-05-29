@@ -6,6 +6,11 @@ import {
   fetchPopularMovies,
   fetchMultiSearch,
 } from '../../actions';
+import {
+  getMovie,
+  getActiveLanguagesFilters,
+  getActiveGenersFilters,
+} from '../../reducers';
 import './MovieViews.scss';
 
 class MainPage extends Component {
@@ -29,10 +34,10 @@ class MainPage extends Component {
     };
     let moviesToRender = movies;
 
-    const activeFilters = this.props.activeFilters.genres;
+    const { activeGenersFilters } = this.props;
 
-    if (isMovies && activeFilters.length) {
-      activeFilters.forEach((filterId) => {
+    if (isMovies && activeGenersFilters.length) {
+      activeGenersFilters.forEach((filterId) => {
         moviesToRender = moviesToRender.filter(
           (movie) =>
             (movie.genre_ids && movie.genre_ids.includes(filterId)) ||
@@ -41,10 +46,10 @@ class MainPage extends Component {
       });
     }
 
-    const activeFiltersLang = this.props.activeFilters.languages;
+    const { activeLanguagesFilters } = this.props;
 
-    if (isMovies && activeFiltersLang.length) {
-      activeFiltersLang.forEach((filterId) => {
+    if (isMovies && activeLanguagesFilters.length) {
+      activeLanguagesFilters.forEach((filterId) => {
         moviesToRender = moviesToRender.filter((movie) => {
           return (
             movie.original_language && movie.original_language === filterId
@@ -52,6 +57,7 @@ class MainPage extends Component {
         });
       });
     }
+
     return (
       <div className="main">
         <MovieList movies={isMovies ? moviesToRender : topAndPopularMovies} />
@@ -61,12 +67,14 @@ class MainPage extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
     keyword: state.keyword,
-    movies: state.dataApi.movies,
+    movies: getMovie(state),
     topMovies: state.dataApi.topMovies,
     popularMovies: state.dataApi.popularMovies,
-    activeFilters: state.activeFilters,
+    activeLanguagesFilters: getActiveLanguagesFilters(state),
+    activeGenersFilters: getActiveGenersFilters(state),
   };
 };
 
